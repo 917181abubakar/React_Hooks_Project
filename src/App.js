@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import ResourceList from './components/ResourceList';
+import Users from './components/Users';
+
+// class App extends React.Component {
+//   state = {
+//     resourceName: 'posts'
+//   }
+
+//   render() {
+//     return (
+//       <React.Fragment>
+//         <button onClick={() => this.setState({ resourceName: 'posts' })}>Posts</button>
+//         <button onClick={() => this.setState({ resourceName: 'todos' })}>Todos</button>
+//         <ResourceList resourceName={this.state.resourceName}/>
+//       </React.Fragment>
+//     )
+//   }
+// }
+const App=()=>{
+  const [resourceName,setResourceName]=useState('posts');
+  //its actually resouceName==-current resourceName
+  // setResourceName==funcction that changes resoucrce Name
+  // useState===function(params===initialstate)
+  return(
+    <React.Fragment>
+         <Users />
+           <button onClick={() => setResourceName('posts' )}>Posts</button>
+          <button onClick={() => setResourceName('todos' )}>Todos</button>          
+          <ResourceList resourceName={resourceName}/>
+    </React.Fragment>
+  )
 }
-
 export default App;
